@@ -1,0 +1,16 @@
+## UNMAKE MODULES LIST:
+##
+## Formatting:
+## Directory git_repo[ @tag-or-commit ]
+## i.e.:
+## .unmake/modules/seanmorris/cv3-inject https://github.com/seanmorris/cv3-inject.git@v0.0.7
+## 
+## Comments start with a #.
+## Empty lines are ignored.
+## 
+
+## This line would import the git repo below
+## It contains an npm module, so it would
+## do nothing if included.
+##
+## .unmake/modules/seanmorris/cv3-inject https://github.com/seanmorris/cv3-inject.git@v0.0.7

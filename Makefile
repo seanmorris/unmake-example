@@ -1,13 +1,16 @@
 #!/usr/bin/env make
+SHELL=/usr/bin/env bash -euo pipefail
+MAKEFLAGS += --no-builtin-rules --warn-undefined-variables --no-print-directory
 
-MAKEFLAGS += --no-builtin-rules --warn-undefined-variables
-
-HASH_SOURCES=$(shell find ./files/ -type f | grep -v '\/\.')
-HASH_TARGETS=${HASH_SOURCES:./files/%=./hashes/%.sha-digest}
-
-all: ${HASH_TARGETS}
+all: targets
 
 include .unmake/unmake/Makefile
 
-hashes/%.sha-digest: files/% .salt
-	bin/hash-files.sh $< > $@
+$(call IMPORT_MODULE,publisher)
+$(call IMPORT_MODULE,digest)
+$(call IMPORT_MODULE,cropper)
+$(call IMPORT_MODULE,audio)
+$(call IMPORT_MODULE,video)
+
+targets: unmake-index ${UNMAKE_TARGETS}
+
